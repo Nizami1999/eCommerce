@@ -1,0 +1,67 @@
+﻿@model IEnumerable<eCommerce.Models.HomeSlider>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary w-100" })
+</p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped ">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Image)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TitleTop)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TitleMain)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TitleBottom)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TitleSpan)
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <div style="margin: 0 auto; background-image: url(/Public/img/slider/home1/@item.Image); background-repeat: no-repeat; background-position: center; background-size: cover; height: 120px; width: 300px"></div>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TitleTop)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TitleMain)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TitleBottom)
+                        </td>
+                        <td style="word-wrap: break-word;min-width: 200px;max-width: 200px;">
+                            @Html.DisplayFor(modelItem => item.TitleSpan)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+
+        </div>
+    </div>
+
+</div>

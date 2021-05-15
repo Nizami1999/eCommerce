@@ -1,0 +1,57 @@
+﻿@model IEnumerable<eCommerce.Models.Team>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary w-100" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Image)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FullName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstagramLink)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LinkedInLink)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FacebookLink)
+        </th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <div style="margin: 0 auto; background-image: url(/Public/img/team/@item.Image); background-repeat: no-repeat; background-position: center; background-size: cover; height: 200px; width: 200px"></div>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstagramLink)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LinkedInLink)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FacebookLink)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+            </td>
+        </tr>
+    }
+
+</table>

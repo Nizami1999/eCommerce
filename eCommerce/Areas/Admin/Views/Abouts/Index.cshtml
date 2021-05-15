@@ -1,0 +1,50 @@
+﻿@model IEnumerable<eCommerce.Models.About>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary w-100" })
+</p>
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped ">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Image)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.MainTitle)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Info)
+                    </th>
+                    <th>Action</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <div style="margin: 0 auto; background-image: url(/Public/img/about/@item.Image); background-repeat: no-repeat; background-position: center; background-size: contain; height: 100px;"></div>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.MainTitle)
+                        </td>
+                        <td style="word-wrap: break-word;min-width: 200px;max-width: 200px;">
+                            @Html.DisplayFor(modelItem => item.Info)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,272 @@
+﻿@using eCommerce.ViewModels;
+@using eCommerce.Models;
+@model HomeIndexVM
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<!-- slider-section-start -->
+<div class="main-slider-one slider-area">
+    <div id="wrapper">
+        <div class="slider-wrapper">
+            <div id="mainSlider" class="nivoSlider" style="width: 100%; height: 620px; overflow: hidden;">
+                @foreach (var i in Model.HomeSlider)
+                {
+                    <img style="object-fit: cover;" src="~/Public/img/slider/home1/@i.Image" alt="main slider @i.Id" title="#htmlcaption@(i.Id)" />
+                }
+            </div>
+            @foreach (var i in Model.HomeSlider)
+            {
+                <div id="htmlcaption@(i.Id)" class="nivo-html-caption slider-caption">
+                    <div class="container">
+                        <div class="slider-text slider-left slider-right">
+                            <div class="slide-text animated bounceInRight">
+                                <h3 class="bounceInDown">@i.TitleTop</h3>
+                                <h1>@i.TitleMain</h1>
+                                <span>@i.TitleBottom</span>
+                            </div>
+                            <div class="one-p animated bounceInLeft">
+                                <p>@i.TitleSpan</p>
+                            </div>
+                            <div class="animated slider-btn fadeInUpBig">
+                                <a class="shop-btn" href="shop.html">Shop now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<!-- slider section end -->
+<!-- collection section start -->
+@Html.Partial("_CollectionSection")
+<!-- collection section end -->
+<!-- featured-products section start -->
+<section class="single-products section-padding extra-padding-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="section-title text-center">
+                    <h2>All new products</h2>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper">
+            <ul class="load-list load-list-one">
+                @for (int j = 0; j < Model.AllNewSmartphones.Count; j += 4)
+                {
+                    <li>
+                        <div class="row text-center">
+                            @for (int i = j; i < Math.Min(j + 4, Model.AllNewSmartphones.Count); i++)
+                            {
+                                <div class="col-xs-12 col-sm-6 col-md-3">
+                                    <div class="single-product">
+                                        <div style="overflow: hidden; padding: 4.5rem;" class="product-img">
+                                            <div style="background-color: #5cb85c;" class="pro-type">
+                                                <span>@Model.AllNewSmartphones[i].Badge</span>
+                                            </div>
+                                            <a href="/Home/Details/@Model.AllNewSmartphones[i].Id"><div style="margin: 0 auto; background-image: url(/Public/img/Smartphones/@Model.AllNewSmartphones[i].Image); background-repeat: no-repeat; background-position: center; background-size: contain; height: 200px"></div></a>
+                                            <div class="actions-btn">
+                                                @{
+                                                    if (Session["loggedUser"] != null)
+                                                    {
+                                                        <a><i data-id="@Model.AllNewSmartphones[i].Id" onclick="getSmartphone()" style="cursor: pointer;" class="mdi mdi-cart"></i></a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a style="opacity: 0" href="/Home/Details/@Model.AllNewSmartphones[i].Id"><i style="cursor: pointer;" class="mdi mdi-cart"></i></a>
+                                                    }
+                                                }
+                                                <a><i style="cursor: pointer;" onclick="phoneDetails()" data-id="@Model.AllNewSmartphones[i].Id" class="mdi mdi-eye"></i></a>
+                                                @{
+                                                    if (Session["loggedUser"] != null)
+                                                    {
+                                                        <a> <i style="cursor: pointer;" class="mdi mdi-heart"></i></a>
+                                                    }
+                                                    else
+                                                    {
+                                                        <a style="opacity: 0" href="/Home/Details/@Model.AllNewSmartphones[i].Id"><i style="cursor: pointer;" class="mdi mdi-cart"></i></a>
+                                                    }
+                                                }
+                                            </div>
+                                        </div>
+                                        <div class="product-dsc">
+                                            <p><a href="#">@Model.AllNewSmartphones[i].Name</a></p>
+                                            <span>
+                                                $@Model.AllNewSmartphones[i].NewPrice@{
+                                                    if (Model.AllNewSmartphones[i].PrevPrice != null)
+                                                    {
+                                                        <small><del>&nbsp;&nbsp;$@Model.AllNewSmartphones[i].PrevPrice</del></small>
+                                                    }
+                                                }
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </li>
+                }
+            </ul>
+            <button style="margin: 2rem 0 0 0;" id="load-more-one">Load More</button>
+        </div>
+    </div>
+</section>
+<!-- featured-products section end -->
+<!-- coming product section start -->
+<section class="coming-product">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-md-2">
+                <div class="tab-menu nav nav-tabs padding">
+                    <ul>
+                        @for (int i = 0; i < 2; i++)
+                        {
+                            <li class="@(Model.HomeComingProducts[i].Id == 1 ? "active" : "")">
+                                <a href="product@(Model.HomeComingProducts[i].Id)" data-toggle="tab" data-target="#product@(Model.HomeComingProducts[i].Id), #text@(Model.HomeComingProducts[i].Id)">
+                                    <div style="margin: 0 auto; background-image: url(/Public/img/coming/@Model.HomeComingProducts[i].Image); background-repeat: no-repeat; background-position: center; background-size: contain; height: 100px; width: 100px;"></div>
+                                </a>
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-7 col-md-5">
+                <div class="text-center large-img tab-content">
+                    @for (int i = 0; i < 2; i++)
+                    {
+                        <div class="tab-pane fade in @(Model.HomeComingProducts[i].Id == 1 ? "active" : "")" id="product@(Model.HomeComingProducts[i].Id)">
+                            <div style="margin: 0 auto; background-image: url(/Public/img/coming/@Model.HomeComingProducts[i].Image); background-repeat: no-repeat; background-position: center; background-size: contain; height: 500px"></div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-5">
+                <div class="padding">
+                    <div class="tab-content">
+                        @for (int i = 0; i < 2; i++)
+                        {
+                            <div class="single-coming tab-pane fade-in @(Model.HomeComingProducts[i].Id == 1 ? "active" : "")" id="text@(Model.HomeComingProducts[i].Id)">
+                                <h4><a href="#">@Model.HomeComingProducts[i].Name</a></h4>
+                                <span><strong>$@Model.HomeComingProducts[i].NewPrice</strong>   <del>$@Model.HomeComingProducts[i].PrevPrice</del></span>
+                                <p class="come-p">@Model.HomeComingProducts[i].Info</p>
+                                <ul class="color-size">
+                                    <li><span>Brand</span><strong>:</strong>@Model.HomeComingProducts[i].Brand</li>
+                                    <li><span>Color</span><strong>:</strong> <a href="#">@Model.HomeComingProducts[i].Color1</a><a href="#">@Model.HomeComingProducts[i].Color2</a><a href="#">@Model.HomeComingProducts[i].Color3</a></li>
+                                    <li><span>Memory</span><strong>:</strong> <a href="#">@Model.HomeComingProducts[i].Memory</a></li>
+                                    <li><span>Camera</span><strong>:</strong>@Model.HomeComingProducts[i].Camera</li>
+                                </ul>
+                                <div class="count-text clearfix">
+                                    <ul id="countdown-@(Model.HomeComingProducts[i].Id)">
+                                        <li>
+                                            <p class="timeRefDays timedescription">days</p>
+                                            <span class="days timenumbers">15</span>
+                                        </li>
+                                        <li>
+                                            <p class="timeRefHours timedescription">hrs</p>
+                                            <span class="hours timenumbers">13</span>
+                                        </li>
+                                        <li>
+                                            <p class="timeRefMinutes timedescription">mins</p>
+                                            <span class="minutes timenumbers">45</span>
+                                        </li>
+                                        <li>
+                                            <p class="timeRefSeconds timedescription">secs</p>
+                                            <span class="seconds timenumbers">12</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- coming product section end -->
+<!-- service section start -->
+<section class="service-area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="section-title text-center">
+                    <h2>Our Service</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center">
+            <div class="col-sm-4">
+                <div class="service-text">
+                    <i class="mdi mdi-truck"></i>
+                    <h4>home delivery</h4>
+                    <p>Contrary to popular belief, Lorem Ipsum is <br /> not simply random text.</p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="service-text">
+                    <i class="mdi mdi-lock"></i>
+                    <h4>PAYMENT SECURED</h4>
+                    <p>Contrary to popular belief, Lorem Ipsum is <br /> not simply random text.</p>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="service-text">
+                    <i class="mdi mdi-rotate-left"></i>
+                    <h4>30 days money back</h4>
+                    <p>Contrary to popular belief, Lorem Ipsum is <br /> not simply random text.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- service section end -->
+<!-- blog section start -->
+<section class="latest-blog section-padding extra-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="section-title text-center">
+                    <h2>Latest Blog</h2>
+                </div>
+            </div>
+        </div>
+        <div class="wrapper">
+            <ul class="load-list load-list-blog">
+                @for (int j = 0; j < Model.Blog.Count; j += 3)
+                {
+                    <li>
+                        <div class="row">
+                            @for (int i = j; i < Math.Min(j + 3, Model.Blog.Count); i++)
+                            {
+                                <div class="col-sm-4">
+                                    <div class="l-blog-text">
+                                        <div class="banner">
+                                            <a href="/Blog/Details/@Model.Blog[i].Id">
+                                                <img src="~/Public/img/blog/@Model.Blog[i].Image" alt="" />
+                                            </a>
+                                        </div>
+                                        <div class="s-blog-text">
+                                            <h4><a href="/Blog/Details/@Model.Blog[i].Id">@Model.Blog[i].MainTitle</a></h4>
+                                            <p>@Model.Blog[i].Info.Substring(0, 70)...</p>
+                                        </div>
+                                        <div class="date-read clearfix">
+                                            <i class="mdi mdi-clock">@Convert.ToDateTime(Model.Blog[i].Date).ToString(" dd MMMM yyyy")</i>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </div>
+                    </li>
+                }
+            </ul>
+            <button id="load-more-blog">Load More</button>
+        </div>
+    </div>
+</section>
+<!-- blog section end -->
+<!-- quick view start  -->
+@Html.Partial("_QuickView")
+<!-- quick view end -->

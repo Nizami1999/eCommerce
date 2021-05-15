@@ -1,0 +1,110 @@
+﻿@model IEnumerable<eCommerce.Models.Smartphone>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary w-100" })
+</p>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped ">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Image)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.NewPrice)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.PrevPrice)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Badge)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Info)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Color1)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Color2)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Color3)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Memory)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Camera)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Brand.Name)
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            <div style="height: 150px; width: 150px; overflow: hidden">
+                                <img style="object-fit: contain; width: 100%; height: 100%;" src="~/Public/img/Smartphones/@item.Image"/>
+                            </div>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.NewPrice)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.PrevPrice)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Badge)
+                        </td>
+                        <td style="word-wrap: break-word;min-width: 350px;max-width: 350px;">
+                            @Html.DisplayFor(modelItem => item.Info)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Color1)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Color2)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Color3)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Memory)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Camera)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Brand.Name)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+        </div>
+    </div>
+</div>

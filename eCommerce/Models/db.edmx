@@ -1,0 +1,689 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="EcommerceModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="About">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="150" />
+          <Property Name="MainTitle" Type="nvarchar" MaxLength="50" />
+          <Property Name="Info" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="AdminAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Password" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Blog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="150" />
+          <Property Name="MainTitle" Type="nvarchar" MaxLength="100" />
+          <Property Name="Info" Type="nvarchar" MaxLength="400" />
+          <Property Name="Date" Type="date" />
+        </EntityType>
+        <EntityType Name="Brands">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="HomeCollection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LeftImage" Type="nvarchar" MaxLength="200" />
+          <Property Name="CenterImage" Type="nvarchar" MaxLength="200" />
+          <Property Name="RightImage" Type="nvarchar" MaxLength="200" />
+          <Property Name="FirstTextMain" Type="nvarchar" MaxLength="50" />
+          <Property Name="FirstTextInfo" Type="nvarchar" MaxLength="200" />
+          <Property Name="SecondTextMain" Type="nvarchar" MaxLength="50" />
+          <Property Name="SecondTextInfo" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="HomeComingProducts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="200" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="NewPrice" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="PrevPrice" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="Info" Type="nvarchar" MaxLength="400" />
+          <Property Name="Brand" Type="nvarchar" MaxLength="50" />
+          <Property Name="Color1" Type="nvarchar" MaxLength="25" />
+          <Property Name="Color2" Type="nvarchar" MaxLength="25" />
+          <Property Name="Color3" Type="nvarchar" MaxLength="25" />
+          <Property Name="Memory" Type="nvarchar" MaxLength="25" />
+          <Property Name="Camera" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="HomeFeaturedProducts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="200" />
+          <Property Name="Badge" Type="nvarchar" MaxLength="25" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Price" Type="decimal" Precision="6" Scale="2" />
+        </EntityType>
+        <EntityType Name="HomeSlider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="200" />
+          <Property Name="TitleTop" Type="nvarchar" MaxLength="50" />
+          <Property Name="TitleMain" Type="nvarchar" MaxLength="50" />
+          <Property Name="TitleBottom" Type="nvarchar" MaxLength="100" />
+          <Property Name="TitleSpan" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="SmartphoneId" Type="int" />
+          <Property Name="Date" Type="datetime" />
+          <Property Name="Status" Type="bit" />
+        </EntityType>
+        <EntityType Name="OrderSubmit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="SmartphoneId" Type="int" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="TotalPrice" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="Date" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Smartphones">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="Image" Type="nvarchar" MaxLength="200" />
+          <Property Name="NewPrice" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="PrevPrice" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="Badge" Type="nvarchar" MaxLength="25" />
+          <Property Name="Info" Type="nvarchar" MaxLength="400" />
+          <Property Name="Color1" Type="nvarchar" MaxLength="25" />
+          <Property Name="Color2" Type="nvarchar" MaxLength="25" />
+          <Property Name="Color3" Type="nvarchar" MaxLength="25" />
+          <Property Name="Memory" Type="nvarchar" MaxLength="25" />
+          <Property Name="Camera" Type="nvarchar" MaxLength="100" />
+          <Property Name="BrandId" Type="int" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="150" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="100" />
+          <Property Name="InstagramLink" Type="nvarchar" MaxLength="200" />
+          <Property Name="LinkedInLink" Type="nvarchar" MaxLength="200" />
+          <Property Name="FacebookLink" Type="nvarchar" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FullName" Type="nvarchar" MaxLength="70" />
+          <Property Name="Username" Type="nvarchar" MaxLength="70" />
+          <Property Name="Email" Type="nvarchar" MaxLength="100" />
+          <Property Name="Password" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <Association Name="FK__Orders__Smartpho__17036CC0">
+          <End Role="Smartphones" Type="Self.Smartphones" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Smartphones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="SmartphoneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__UserId__160F4887">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderSubm__Smart__2A164134">
+          <End Role="Smartphones" Type="Self.Smartphones" Multiplicity="0..1" />
+          <End Role="OrderSubmit" Type="Self.OrderSubmit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Smartphones">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderSubmit">
+              <PropertyRef Name="SmartphoneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderSubm__UserI__29221CFB">
+          <End Role="Users" Type="Self.Users" Multiplicity="0..1" />
+          <End Role="OrderSubmit" Type="Self.OrderSubmit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderSubmit">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Smartphon__Brand__5CD6CB2B">
+          <End Role="Brands" Type="Self.Brands" Multiplicity="0..1" />
+          <End Role="Smartphones" Type="Self.Smartphones" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brands">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Smartphones">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="EcommerceModelStoreContainer">
+          <EntitySet Name="About" EntityType="Self.About" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdminAccount" EntityType="Self.AdminAccount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Blog" EntityType="Self.Blog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Brands" EntityType="Self.Brands" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HomeCollection" EntityType="Self.HomeCollection" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HomeComingProducts" EntityType="Self.HomeComingProducts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HomeFeaturedProducts" EntityType="Self.HomeFeaturedProducts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HomeSlider" EntityType="Self.HomeSlider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderSubmit" EntityType="Self.OrderSubmit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Smartphones" EntityType="Self.Smartphones" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Team" EntityType="Self.Team" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Orders__Smartpho__17036CC0" Association="Self.FK__Orders__Smartpho__17036CC0">
+            <End Role="Smartphones" EntitySet="Smartphones" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__UserId__160F4887" Association="Self.FK__Orders__UserId__160F4887">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderSubm__Smart__2A164134" Association="Self.FK__OrderSubm__Smart__2A164134">
+            <End Role="Smartphones" EntitySet="Smartphones" />
+            <End Role="OrderSubmit" EntitySet="OrderSubmit" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderSubm__UserI__29221CFB" Association="Self.FK__OrderSubm__UserI__29221CFB">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="OrderSubmit" EntitySet="OrderSubmit" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Smartphon__Brand__5CD6CB2B" Association="Self.FK__Smartphon__Brand__5CD6CB2B">
+            <End Role="Brands" EntitySet="Brands" />
+            <End Role="Smartphones" EntitySet="Smartphones" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="EcommerceModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="HomeSlider">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TitleTop" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TitleMain" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TitleBottom" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TitleSpan" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="EcommerceEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="HomeSliders" EntityType="Self.HomeSlider" />
+          <EntitySet Name="HomeCollections" EntityType="EcommerceModel.HomeCollection" />
+          <EntitySet Name="HomeComingProducts" EntityType="EcommerceModel.HomeComingProduct" />
+          <EntitySet Name="HomeFeaturedProducts" EntityType="EcommerceModel.HomeFeaturedProduct" />
+          <EntitySet Name="Smartphones" EntityType="EcommerceModel.Smartphone" />
+          <EntitySet Name="Brands" EntityType="EcommerceModel.Brand" />
+          <AssociationSet Name="FK__Smartphon__Brand__5CD6CB2B" Association="EcommerceModel.FK__Smartphon__Brand__5CD6CB2B">
+            <End Role="Brand" EntitySet="Brands" />
+            <End Role="Smartphone" EntitySet="Smartphones" />
+          </AssociationSet>
+          <EntitySet Name="AdminAccounts" EntityType="EcommerceModel.AdminAccount" />
+          <EntitySet Name="Users" EntityType="EcommerceModel.User" />
+          <EntitySet Name="Orders" EntityType="EcommerceModel.Order" />
+          <AssociationSet Name="FK__Orders__Smartpho__17036CC0" Association="EcommerceModel.FK__Orders__Smartpho__17036CC0">
+            <End Role="Smartphone" EntitySet="Smartphones" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__UserId__160F4887" Association="EcommerceModel.FK__Orders__UserId__160F4887">
+            <End Role="User" EntitySet="Users" />
+            <End Role="Order" EntitySet="Orders" />
+          </AssociationSet>
+          <EntitySet Name="OrderSubmits" EntityType="EcommerceModel.OrderSubmit" />
+          <AssociationSet Name="FK__OrderSubm__Smart__2A164134" Association="EcommerceModel.FK__OrderSubm__Smart__2A164134">
+            <End Role="Smartphone" EntitySet="Smartphones" />
+            <End Role="OrderSubmit" EntitySet="OrderSubmits" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderSubm__UserI__29221CFB" Association="EcommerceModel.FK__OrderSubm__UserI__29221CFB">
+            <End Role="User" EntitySet="Users" />
+            <End Role="OrderSubmit" EntitySet="OrderSubmits" />
+          </AssociationSet>
+          <EntitySet Name="Blogs" EntityType="EcommerceModel.Blog" />
+          <EntitySet Name="Abouts" EntityType="EcommerceModel.About" />
+          <EntitySet Name="Teams" EntityType="EcommerceModel.Team" />
+        </EntityContainer>
+        <EntityType Name="HomeCollection">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LeftImage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CenterImage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="RightImage" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FirstTextMain" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="FirstTextInfo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="SecondTextMain" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SecondTextInfo" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HomeComingProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="NewPrice" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="PrevPrice" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="Info" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Color1" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Color2" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Color3" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Memory" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Camera" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="HomeFeaturedProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Badge" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Price" Type="Decimal" Precision="6" Scale="2" />
+        </EntityType>
+        <EntityType Name="Smartphone">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Image" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="NewPrice" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="PrevPrice" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="Badge" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Info" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Color1" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Color2" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Color3" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Memory" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Camera" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="BrandId" Type="Int32" />
+          <NavigationProperty Name="Brand" Relationship="EcommerceModel.FK__Smartphon__Brand__5CD6CB2B" FromRole="Smartphone" ToRole="Brand" />
+          <NavigationProperty Name="Orders" Relationship="EcommerceModel.FK__Orders__Smartpho__17036CC0" FromRole="Smartphone" ToRole="Order" />
+          <NavigationProperty Name="OrderSubmits" Relationship="EcommerceModel.FK__OrderSubm__Smart__2A164134" FromRole="Smartphone" ToRole="OrderSubmit" />
+        </EntityType>
+        <EntityType Name="Brand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Smartphones" Relationship="EcommerceModel.FK__Smartphon__Brand__5CD6CB2B" FromRole="Brand" ToRole="Smartphone" />
+        </EntityType>
+        <Association Name="FK__Smartphon__Brand__5CD6CB2B">
+          <End Type="EcommerceModel.Brand" Role="Brand" Multiplicity="0..1" />
+          <End Type="EcommerceModel.Smartphone" Role="Smartphone" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Brand">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Smartphone">
+              <PropertyRef Name="BrandId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="AdminAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="Username" Type="String" MaxLength="70" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Orders" Relationship="EcommerceModel.FK__Orders__UserId__160F4887" FromRole="User" ToRole="Order" />
+          <NavigationProperty Name="OrderSubmits" Relationship="EcommerceModel.FK__OrderSubm__UserI__29221CFB" FromRole="User" ToRole="OrderSubmit" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="SmartphoneId" Type="Int32" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <Property Name="Status" Type="Boolean" />
+          <NavigationProperty Name="Smartphone" Relationship="EcommerceModel.FK__Orders__Smartpho__17036CC0" FromRole="Order" ToRole="Smartphone" />
+          <NavigationProperty Name="User" Relationship="EcommerceModel.FK__Orders__UserId__160F4887" FromRole="Order" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__Orders__Smartpho__17036CC0">
+          <End Type="EcommerceModel.Smartphone" Role="Smartphone" Multiplicity="0..1" />
+          <End Type="EcommerceModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Smartphone">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="SmartphoneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__UserId__160F4887">
+          <End Type="EcommerceModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="EcommerceModel.Order" Role="Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Order">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="OrderSubmit">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="SmartphoneId" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="TotalPrice" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="Date" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Smartphone" Relationship="EcommerceModel.FK__OrderSubm__Smart__2A164134" FromRole="OrderSubmit" ToRole="Smartphone" />
+          <NavigationProperty Name="User" Relationship="EcommerceModel.FK__OrderSubm__UserI__29221CFB" FromRole="OrderSubmit" ToRole="User" />
+        </EntityType>
+        <Association Name="FK__OrderSubm__Smart__2A164134">
+          <End Type="EcommerceModel.Smartphone" Role="Smartphone" Multiplicity="0..1" />
+          <End Type="EcommerceModel.OrderSubmit" Role="OrderSubmit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Smartphone">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderSubmit">
+              <PropertyRef Name="SmartphoneId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderSubm__UserI__29221CFB">
+          <End Type="EcommerceModel.User" Role="User" Multiplicity="0..1" />
+          <End Type="EcommerceModel.OrderSubmit" Role="OrderSubmit" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="User">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrderSubmit">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Blog">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Image" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="MainTitle" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Info" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="About">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Image" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="MainTitle" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Info" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Team">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Image" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="FullName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="InstagramLink" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="LinkedInLink" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="FacebookLink" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="EcommerceModelStoreContainer" CdmEntityContainer="EcommerceEntities">
+          <EntitySetMapping Name="HomeSliders">
+            <EntityTypeMapping TypeName="EcommerceModel.HomeSlider">
+              <MappingFragment StoreEntitySet="HomeSlider">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="TitleTop" ColumnName="TitleTop" />
+                <ScalarProperty Name="TitleMain" ColumnName="TitleMain" />
+                <ScalarProperty Name="TitleBottom" ColumnName="TitleBottom" />
+                <ScalarProperty Name="TitleSpan" ColumnName="TitleSpan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HomeCollections">
+            <EntityTypeMapping TypeName="EcommerceModel.HomeCollection">
+              <MappingFragment StoreEntitySet="HomeCollection">
+                <ScalarProperty Name="SecondTextInfo" ColumnName="SecondTextInfo" />
+                <ScalarProperty Name="SecondTextMain" ColumnName="SecondTextMain" />
+                <ScalarProperty Name="FirstTextInfo" ColumnName="FirstTextInfo" />
+                <ScalarProperty Name="FirstTextMain" ColumnName="FirstTextMain" />
+                <ScalarProperty Name="RightImage" ColumnName="RightImage" />
+                <ScalarProperty Name="CenterImage" ColumnName="CenterImage" />
+                <ScalarProperty Name="LeftImage" ColumnName="LeftImage" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HomeComingProducts">
+            <EntityTypeMapping TypeName="EcommerceModel.HomeComingProduct">
+              <MappingFragment StoreEntitySet="HomeComingProducts">
+                <ScalarProperty Name="Camera" ColumnName="Camera" />
+                <ScalarProperty Name="Memory" ColumnName="Memory" />
+                <ScalarProperty Name="Color3" ColumnName="Color3" />
+                <ScalarProperty Name="Color2" ColumnName="Color2" />
+                <ScalarProperty Name="Color1" ColumnName="Color1" />
+                <ScalarProperty Name="Brand" ColumnName="Brand" />
+                <ScalarProperty Name="Info" ColumnName="Info" />
+                <ScalarProperty Name="PrevPrice" ColumnName="PrevPrice" />
+                <ScalarProperty Name="NewPrice" ColumnName="NewPrice" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HomeFeaturedProducts">
+            <EntityTypeMapping TypeName="EcommerceModel.HomeFeaturedProduct">
+              <MappingFragment StoreEntitySet="HomeFeaturedProducts">
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Badge" ColumnName="Badge" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Smartphones">
+            <EntityTypeMapping TypeName="EcommerceModel.Smartphone">
+              <MappingFragment StoreEntitySet="Smartphones">
+                <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+                <ScalarProperty Name="Camera" ColumnName="Camera" />
+                <ScalarProperty Name="Memory" ColumnName="Memory" />
+                <ScalarProperty Name="Color3" ColumnName="Color3" />
+                <ScalarProperty Name="Color2" ColumnName="Color2" />
+                <ScalarProperty Name="Color1" ColumnName="Color1" />
+                <ScalarProperty Name="Info" ColumnName="Info" />
+                <ScalarProperty Name="Badge" ColumnName="Badge" />
+                <ScalarProperty Name="PrevPrice" ColumnName="PrevPrice" />
+                <ScalarProperty Name="NewPrice" ColumnName="NewPrice" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Brands">
+            <EntityTypeMapping TypeName="EcommerceModel.Brand">
+              <MappingFragment StoreEntitySet="Brands">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdminAccounts">
+            <EntityTypeMapping TypeName="EcommerceModel.AdminAccount">
+              <MappingFragment StoreEntitySet="AdminAccount">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="EcommerceModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="EcommerceModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="SmartphoneId" ColumnName="SmartphoneId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderSubmits">
+            <EntityTypeMapping TypeName="EcommerceModel.OrderSubmit">
+              <MappingFragment StoreEntitySet="OrderSubmit">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="SmartphoneId" ColumnName="SmartphoneId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Blogs">
+            <EntityTypeMapping TypeName="EcommerceModel.Blog">
+              <MappingFragment StoreEntitySet="Blog">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Info" ColumnName="Info" />
+                <ScalarProperty Name="MainTitle" ColumnName="MainTitle" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Abouts">
+            <EntityTypeMapping TypeName="EcommerceModel.About">
+              <MappingFragment StoreEntitySet="About">
+                <ScalarProperty Name="Info" ColumnName="Info" />
+                <ScalarProperty Name="MainTitle" ColumnName="MainTitle" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Teams">
+            <EntityTypeMapping TypeName="EcommerceModel.Team">
+              <MappingFragment StoreEntitySet="Team">
+                <ScalarProperty Name="FacebookLink" ColumnName="FacebookLink" />
+                <ScalarProperty Name="LinkedInLink" ColumnName="LinkedInLink" />
+                <ScalarProperty Name="InstagramLink" ColumnName="InstagramLink" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

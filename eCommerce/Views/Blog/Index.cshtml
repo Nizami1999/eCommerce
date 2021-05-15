@@ -1,0 +1,53 @@
+﻿@using eCommerce.Models;
+@model List<Blog>
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- pages-title-start -->
+<div class="pages-title section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="pages-title-text text-center">
+                    <h2>Blog</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- pages-title-end -->
+<!-- blog section start -->
+<section class="latest-blog section-padding">
+    <div class="container">
+        <ul class="blog-row clearfix">
+            @for (int j = 0; j < Model.Count; j += 3)
+            {
+                <li>
+                    <div class="row">
+                        @for (int i = j; i < Math.Min(j + 3, Model.Count); i++)
+                        {
+                            <div class="col-sm-4">
+                                <div class="l-blog-text">
+                                    <div class="banner">
+                                        <a href="/Blog/Details/@Model[i].Id">
+                                            <img src="~/Public/img/blog/@Model[i].Image" alt="" />
+                                        </a>
+                                    </div>
+                                    <div class="s-blog-text">
+                                        <h4><a href="/Blog/Details/@Model[i].Id">@Model[i].MainTitle</a></h4>
+                                        <p>@Model[i].Info.Substring(0, 70)...</p>
+                                    </div>
+                                    <div class="date-read clearfix">
+                                        <i class="mdi mdi-clock">@Convert.ToDateTime(Model[i].Date).ToString(" dd MMMM yyyy")</i>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+</section>
+<!-- blog section end -->

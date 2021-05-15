@@ -1,0 +1,82 @@
+﻿@using eCommerce.ViewModels;
+@using eCommerce.Models;
+@model HomeIndexVM
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- pages-title-start -->
+<div class="pages-title section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="pages-title-text text-center">
+                    <h2>About</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- pages-title-end -->
+<!-- about-us-section-start -->
+<div class="pages about-us section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="main-padding section-padding-top clearfix">
+                <div class="col-sm-12 col-md-5">
+                    <div style="max-height: 400px;" class="about-img">
+                        <img style="height: 100%; width: 100%; object-fit: contain; margin: 0 auto" src="~/Public/img/about/@Model.About.Image" alt="image-about" />
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <div class="about-text">
+                        <div class="about-author">
+                            <h4>An Multipurpose & Creative assembly of <br /> fashion store</h4>
+                        </div>
+                        <p>@Model.About.Info</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- about-us section end -->
+<!-- team-member section start -->
+<section class="pages team-member section-padding-bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="section-title text-center">
+                    <h3>Creative Team</h3>
+                </div>
+            </div>
+        </div>
+        <div class="row text-center">
+            @foreach (var i in Model.Team)
+            {
+                <div class="col-xs-12 col-sm-6 col-md-3">
+                    <div class="single-member">
+                        <div class="member-img">
+                            @*<a href="@i.LinkedInLink"><img src="~/Public/img/team/@i.Image" alt="Team Member" /></a>*@
+                            <a target="_blank" href="@i.LinkedInLink">
+                                <img style="object-fit: cover; height: 100%; width: 100%;" src="~/Public/img/team/@i.Image" alt="Team Member" />
+                            </a>
+                        </div>
+                        <div class="share-member">
+                            <div class="member-title">
+                                <h4>@i.FullName</h4>
+                            </div>
+                            <div class="member-btn">
+                                <a target="_blank" href="@i.FacebookLink"><i class="mdi mdi-facebook"></i></a>
+                                <a target="_blank" href="@i.InstagramLink"><i class="mdi mdi-instagram"></i></a>
+                                <a target="_blank" href="@i.LinkedInLink"><i class="mdi mdi-linkedin"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<!-- team-member section end -->

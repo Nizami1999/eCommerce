@@ -1,0 +1,92 @@
+﻿@model eCommerce.Models.OrderSubmit
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>OrderSubmit</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Smartphone.Image)
+        </dt>
+
+        <dd>
+            <a href="/Home/Details/@Model.Smartphone.Id">
+                <div style="margin: 0 auto; background-image: url(/Public/img/Smartphones/@Model.Smartphone.Image); background-repeat: no-repeat; background-position: center; background-size: contain; height: 400px"></div>
+            </a>
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Smartphone.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Smartphone.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Smartphone.Info)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Smartphone.Info)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Smartphone.Memory)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Smartphone.Memory)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Smartphone.NewPrice)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Smartphone.NewPrice)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.FullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.FullName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.User.Username)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.User.Username)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index", "", new { @class = "btn btn-success" })
+</p>

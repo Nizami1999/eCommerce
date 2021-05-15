@@ -1,0 +1,37 @@
+﻿@using eCommerce.ViewModels;
+@model HomeIndexVM
+
+<section class="collection-area section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="single-colect banner collect-one">
+                    <a href="/Shop/Index">
+                        <img src="~/Public/img/collect/@Model.HomeCollection.LeftImage" alt="" />
+                    </a>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="colect-text ">
+                    <h4><a href="/Shop/Index">@Model.HomeCollection.FirstTextMain</a></h4>
+                    <h5>@Model.HomeCollection.FirstTextInfo</h5>
+                    <a href="/Shop/Index">Shop Now <i class="mdi mdi-arrow-right"></i></a>
+                </div>
+                <div class="collect-img banner margin single-colect">
+                    <a href="/Shop/Index"><img src="~/Public/img/collect/@Model.HomeCollection.CenterImage" alt="" /></a>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="collect-img banner single-colect">
+                    <a href="/Shop/Index"><img src="~/Public/img/collect/@Model.HomeCollection.RightImage" alt="" /></a>
+                    <h2>New Model!</h2>
+                </div>
+                <div class="colect-text ">
+                    <h4><a href="/Shop/Index">@Model.HomeCollection.SecondTextMain</a></h4>
+                    <p>@Model.HomeCollection.SecondTextInfo</p>
+                    <a href="/Shop/Index">Shop Now <i class="mdi mdi-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

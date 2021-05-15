@@ -1,0 +1,14 @@
+﻿@using eCommerce.Models
+@{
+    ViewBag.Title = "Admin";
+    var admin = Session["AdminAccount"] as AdminAccount;
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>
+            @(admin != null ? admin.Username : "")
+        </h2>
+    </div>
+</div>
+

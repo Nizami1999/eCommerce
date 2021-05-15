@@ -1,0 +1,73 @@
+﻿@model IEnumerable<eCommerce.Models.HomeCollection>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped ">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.LeftImage)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.CenterImage)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.RightImage)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstTextMain)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.FirstTextInfo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SecondTextMain)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.SecondTextInfo)
+                    </th>
+                    <th>
+                        Action
+                    </th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <div style="margin: 0 auto; background-image: url(/Public/img/collect/@item.LeftImage); background-repeat: no-repeat; background-position: center; background-size: cover; height: 100px; width: 100px"></div>
+                        </td>
+                        <td>
+                            <div style="margin: 0 auto; background-image: url(/Public/img/collect/@item.CenterImage); background-repeat: no-repeat; background-position: center; background-size: cover; height: 100px; width: 100px"></div>
+                        </td>
+                        <td>
+                            <div style="margin: 0 auto; background-image: url(/Public/img/collect/@item.RightImage); background-repeat: no-repeat; background-position: center; background-size: cover; height: 100px; width: 100px"></div>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstTextMain)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.FirstTextInfo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.SecondTextMain)
+                        </td>
+                        <td style="word-wrap: break-word;min-width: 200px;max-width: 200px;">
+                            @Html.DisplayFor(modelItem => item.SecondTextInfo)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>
+

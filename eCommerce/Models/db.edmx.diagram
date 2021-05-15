@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="5ac568993ae8498ca1e073eb23a99848" Name="Diagram1" ZoomLevel="73">
+        <EntityTypeShape EntityType="EcommerceModel.HomeSlider" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EcommerceModel.HomeCollection" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="EcommerceModel.HomeComingProduct" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="EcommerceModel.HomeFeaturedProduct" Width="1.5" PointX="2.75" PointY="4.75" />
+        <EntityTypeShape EntityType="EcommerceModel.Smartphone" Width="1.5" PointX="7.375" PointY="0.75" />
+        <EntityTypeShape EntityType="EcommerceModel.Brand" Width="1.5" PointX="8" PointY="5.375" />
+        <AssociationConnector Association="EcommerceModel.FK__Smartphon__Brand__5CD6CB2B" />
+        <EntityTypeShape EntityType="EcommerceModel.AdminAccount" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="EcommerceModel.User" Width="1.5" PointX="11.625" PointY="1" />
+        <EntityTypeShape EntityType="EcommerceModel.Order" Width="1.5" PointX="9.875" PointY="4.625" />
+        <AssociationConnector Association="EcommerceModel.FK__Orders__Smartpho__17036CC0" />
+        <AssociationConnector Association="EcommerceModel.FK__Orders__UserId__160F4887" />
+        <EntityTypeShape EntityType="EcommerceModel.OrderSubmit" Width="1.5" PointX="12.375" PointY="4.625" />
+        <AssociationConnector Association="EcommerceModel.FK__OrderSubm__Smart__2A164134" />
+        <AssociationConnector Association="EcommerceModel.FK__OrderSubm__UserI__29221CFB" />
+        <EntityTypeShape EntityType="EcommerceModel.Blog" Width="1.5" PointX="4.625" PointY="4.75" />
+        <EntityTypeShape EntityType="EcommerceModel.About" Width="1.5" PointX="3.375" PointY="7.75" />
+        <EntityTypeShape EntityType="EcommerceModel.Team" Width="1.5" PointX="5.375" PointY="7.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,145 @@
+﻿@using eCommerce.ViewModels;
+@model HomeIndexVM
+@{
+    ViewBag.Title = "Index";
+}
+
+<!-- pages-title-start -->
+<div class="pages-title section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="pages-title-text text-center">
+                    <h2>Shop</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- pages-title-end -->
+
+<!-- search-phone -->
+<div class="container">
+    <div class="row">
+        <div style="margin: 2rem 0 0 0;" class="col-md-12">
+            <label for="models">Smartphone search:</label>
+            <input oninput="searchSmartphone()" type="text" id="searchSmartphone" class="form-control" />
+            <!-- wishlist content section start -->
+            <div class="table-responsive">
+                <table class="text-center table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Price</th>
+                            <th>Stock Status </th>
+                            <th>Details</th>
+                        </tr>
+                    </thead>
+                    <tbody id="smartphone-group">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- search-phone end -->
+
+<!-- collection section start -->
+@Html.Partial("_CollectionSection")
+<!-- collection section end -->
+
+<!-- tab-products section start -->
+<div class="tab-products single-products section-padding extra-padding-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="section-title text-center">
+                    <div class="product-tab nav nav-tabs">
+                        <ul>
+                            @for (int i = 0; i < Model.Brands.Count; i++)
+                            {
+                                <li class="@(i == 0 ? "active" : "")"><a data-toggle="tab" href="#@Model.Brands[i].Name">@Model.Brands[i].Name <span> </span></a></li>
+                            }
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center tab-content">
+            @for (int z = 1; z < 5; z++)
+            {
+                var Particular_Brand = Model.AllSmartphones.Where(s => s.BrandId == z).ToList();
+                <div class="tab-pane fade in @(z == 1 ? "active" : "")" id="@Particular_Brand[z].Brand.Name">
+                    <div class="wrapper">
+                        <ul class="load-list load-list-@(z == 1 ? "two" : z == 2 ? "three" : z == 3 ? "four" : z == 4 ? "five" : "")">
+                            @for (int j = 0; j < Particular_Brand.Count; j += 4)
+                            {
+                                <li>
+                                    <div class="row text-center">
+                                        @for (int i = j; i < Math.Min(j + 4, Particular_Brand.Count); i++)
+                                        {
+                                            <div class="col-xs-12 col-sm-6 col-md-3">
+                                                <div class="single-product">
+                                                    <div style="overflow: hidden; padding: 4.5rem;" class="product-img">
+                                                        <div style="background-color: @(Particular_Brand[i].Badge == "new" ? "#5cb85c" : Particular_Brand[i].Badge == "sold" ? "#d9534f" : "#0275d8")" class="pro-type">
+                                                            <span>@Particular_Brand[i].Badge</span>
+                                                        </div>
+                                                        <a href="/Home/Details/@(Particular_Brand[i].Id)"><div style="margin: 0 auto; background-image: url(/Public/img/Smartphones/@Particular_Brand[i].Image); background-repeat: no-repeat; background-position: center; background-size: contain; height: 200px"></div></a>
+                                                        <div class="actions-btn">
+                                                            @{
+                                                                if (Session["loggedUser"] != null)
+                                                                {
+                                                                    <a><i style="cursor: pointer;" data-id="@Particular_Brand[i].Id" onclick="getSmartphone()" class="mdi mdi-cart"></i></a>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <a style="opacity: 0" href="/Home/Details/@(Particular_Brand[i].Id)"><i class="mdi mdi-cart"></i></a>
+                                                                }
+                                                            }
+                                                            <a>
+                                                                <i style="cursor: pointer;" onclick="phoneDetails()" data-id="@Particular_Brand[i].Id" class="mdi mdi-eye"></i>
+                                                            </a>
+                                                            @{
+                                                                if (Session["loggedUser"] != null)
+                                                                {
+                                                                    <a><i class="mdi mdi-heart"></i></a>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <a style="opacity: 0" href="/Home/Details/@(Particular_Brand[i].Id)"><i class="mdi mdi-cart"></i></a>
+                                                                }
+                                                            }
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-dsc">
+                                                        <p><a href="#">@Particular_Brand[i].Name</a></p>
+                                                        <span>
+                                                            $@Particular_Brand[i].NewPrice@{
+                                                                if (Particular_Brand[i].PrevPrice != null)
+                                                                {
+                                                                    <small><del>&nbsp;&nbsp;$@Particular_Brand[i].PrevPrice</del></small>
+                                                                }
+                                                            }
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                </li>
+                            }
+                        </ul>
+                        <button style="margin: 2rem 0 0 0;" id="load-more-@(z == 1 ? "two" : z == 2 ? "three" : z == 3 ? "four" : z == 4 ? "five" : "")">Load More</button>
+                    </div>
+                </div>
+
+            }
+
+        </div>
+    </div>
+</div>
+<!-- tab-products section end -->
+
+<!-- quick view start  -->
+@Html.Partial("_QuickView")
+<!-- quick view end -->

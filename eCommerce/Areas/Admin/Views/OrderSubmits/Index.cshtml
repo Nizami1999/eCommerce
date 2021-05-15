@@ -1,0 +1,79 @@
+﻿@model IEnumerable<eCommerce.Models.OrderSubmit>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-striped ">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Smartphone.Image)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Smartphone.Name)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User.FullName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.User.Email)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Quantity)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Smartphone.NewPrice)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.TotalPrice)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Date)
+                    </th>
+                    <th>Action</th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            <a href="/Home/Details/@item.Smartphone.Id">
+                                <div style="margin: 0 auto; background-image: url(/Public/img/Smartphones/@item.Smartphone.Image); background-repeat: no-repeat; background-position: center; background-size: contain; height: 50px"></div>
+                            </a>
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Smartphone.Name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.FullName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.User.Email)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Quantity)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Smartphone.NewPrice)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.TotalPrice)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Date)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

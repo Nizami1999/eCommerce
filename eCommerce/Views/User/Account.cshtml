@@ -1,0 +1,88 @@
+﻿@{
+    ViewBag.Title = "Account";
+}
+@using eCommerce.Models;
+
+@model List<Order>
+
+@{
+    User user = Session["loggedUser"] as User;
+}
+
+<!-- cart content section start -->
+<section class="pages cart-page section-padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1 style="color: #fe5858;" class="text-center">Your selected smarthpones</h1>
+                @if (ViewBag.NullBooks != null)
+                {
+                    <hr />
+                    <div class="text-center">
+                        <h3>@ViewBag.NullBooks</h3>
+                        <a style="margin: 3rem 0;" href="/Home/Index" class="btn btn-primary">Add smartphones</a>
+                        <h5 class="text-danger">All submitted products are sended to administrator!</h5>
+                    </div>
+                    <hr />
+                }
+                else
+                {
+                    <div class="table-responsive padding60">
+                        <form method="post" action="/User/Submit">
+                            <table class="wishlist-table text-center">
+                                <thead>
+                                    <tr>
+                                        <th>Product</th>
+                                        <th>Price</th>
+                                        <th>quantity</th>
+                                        <th>Total Price</th>
+                                        <th>Date</th>
+                                        <th>Remove</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @foreach (var s in Model)
+                                    {
+                                        <tr>
+                                            <td class="td-img text-left">
+                                                <a href="/Home/Details/@s.Smartphone.Id"><div style="margin: 0 auto; background-image: url(/Public/img/Smartphones/@s.Smartphone.Image); background-repeat: no-repeat; background-position: center; background-size: contain; height: 150px"></div></a>
+                                                <div class="items-dsc">
+                                                    <h5><a href="#">@s.Smartphone.Name</a></h5>
+                                                    <input type="hidden" value="@s.Smartphone.Id" name="SmartphoneId" />
+                                                    <input type="hidden" value="@s.Smartphone.NewPrice" name="SmartphonePrice" />
+                                                    <p class="itemcolor">Brand : <span>@s.Smartphone.Brand.Name</span></p>
+                                                    <p class="itemcolor">Memory : <span>@s.Smartphone.Memory</span></p>
+                                                    <p class="itemcolor">Main color : <span>@s.Smartphone.Color1</span></p>
+                                                    <p class="itemcolor">Camera   : <span>@s.Smartphone.Camera</span></p>
+                                                </div>
+                                            </td>
+                                            <td>$@s.Smartphone.NewPrice</td>
+                                            <td>
+                                                <div class="plus-minus">
+                                                    <a class="dec qtybutton">-</a>
+                                                    <input type="text" value="1" name="qtybutton" class="plus-minus-box">
+                                                    <a class="inc qtybutton">+</a>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <strong>$@s.Smartphone.NewPrice</strong>
+                                            </td>
+                                            <td>
+                                                @s.Date
+                                            </td>
+                                            <td><i data-id="@s.Smartphone.Id" onclick="removeBook()" class="mdi mdi-close" title="Remove this product"></i></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                            <button onclick="submit()" type="submit" class="btn btn-primary btn-block btn-lg">Submit</button>
+                        </form>
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+</section>
+<!-- cart content section end -->

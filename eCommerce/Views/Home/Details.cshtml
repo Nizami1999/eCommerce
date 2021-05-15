@@ -1,0 +1,37 @@
+﻿@model eCommerce.Models.Smartphone
+
+@{
+    ViewBag.Title = "Details";
+}
+<div class="container">
+    <div style="margin: 4rem 0;" class="row">
+        <div class="col-md-6">
+            <div style="margin: 0 auto; width: 100%; height: 400px; overflow: hidden">
+                <img style="object-fit: contain; width: 100%; height: 100%;" src="~/Public/img/Smartphones/@Model.Image" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="single-coming">
+                <h4><a href="">@Model.Name</a></h4>
+                <span>
+                    $@Model.NewPrice@{
+                        if (Model.PrevPrice != null)
+                        {
+                            <small><del>&nbsp;&nbsp;$@Model.PrevPrice</del></small>
+                        }
+                    }
+                </span>
+                <p class="come-p">@Model.Info</p>
+                <ul class="color-size">
+                    <li><span>Brand</span><strong>:</strong>@Model.Brand.Name</li>
+                    <li><span>Color</span><strong>:</strong> <a href="#">@Model.Color1</a><a href="#">@Model.Color2</a><a href="#">@Model.Color3</a></li>
+                    <li><span>Memory</span><strong>:</strong> <a href="#">@Model.Memory</a></li>
+                    <li><span>Camera</span><strong>:</strong>@Model.Camera</li>
+                </ul>
+                <div data-id="@Model.Id" onclick="getSmartphone()" style="margin-top: 2rem; cursor: pointer;" class="submit-text">
+                    <a>Add Product</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
